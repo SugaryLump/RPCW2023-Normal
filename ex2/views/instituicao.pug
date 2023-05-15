@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    h2 #{contracts[0].NomeInstituicao} (NIPC: #{contracts[0].NIPCInstituicao})
+    h4 #[a(href="/") Retroceder]
+    table.w3-table
+        tr
+            th ID
+            th Data do Início
+            th Data do Fim
+            th Área de Investigação
+        each contract in contracts
+            tr
+            td
+                a(href="/" + contract._id)=contract._id
+            td=contract.DataInicioContrato
+            td=contract.DataFimContrato
+            td=contract.AreasInvestigacao

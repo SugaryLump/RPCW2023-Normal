@@ -1,0 +1,51 @@
+# 1.1 - Persistência de Dados
+
+A persistência de dados foi concretizada utilizando o MongoDB para criar uma base de dados. Os dados encontram-se em json, com uma estrutura já adequada à
+resolução das queries deste exame.
+
+Os dados foram importados com o comando `mongoimport -d scienceJobs -c contracts --jsonArray empregos-cientificos.json`. Posteriormente, no
+código fonte do servidor, é utilizado o `mongoose` para realizar uma conexão a esta base de dados, especificar um _Schema_ para a estrutura dos
+dados e finalmente realizar _queries_ sobre os mesmos.
+
+# 1.2 - Queries de aquecimento
+
+As _queries_ de aquecimento estão especificadas sob a forma de comandos da _mongo shell_, sendo que os valore
+
+1. `db.contracts.countDocuments()` (17943)
+
+2. `db.contracts.find({NomeInstituicao:"Universidade do Minho"}).count()` (166)
+
+3. `db.contracts.distinct("AreaCNAEF").sort()` (Obtida a lista esperada)
+
+4. 
+```
+db.contracts.aggregate([
+    {$addFields: {
+        Ano: {$substr: ["$DataInicioContrato", 6, -1]}
+    }},
+    {$group: {
+        _id: "$Ano",
+        Total: {$count: { }}
+    }}
+])
+```
+(Obtida a lista dos anos com o total de contratos para cada um)
+
+5. 
+```
+db.contracts.aggregate([
+    {$group: {
+        _id: "$NIPCInstituicao",
+        Total: {$count: { }}
+    }}
+])
+```
+(Obtida a lista das instituições com o total de contratos para cada um)
+
+# 1.3 - Instruções de execução
+
+Ambos os servidores podem ser executados com a seguinte sequência de comandos:
+```
+npm install
+npm start
+```

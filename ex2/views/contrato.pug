@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h2 Contrato #{contract._id}
+  h4 #[a(href="/") Retroceder]
+  ul.w3-ul.w3-border
+    li Instituição: #{contract.NomeInstituicao}
+    li NIPC da Instituicao: #{contract.NIPCInstituicao}
+    li Nome do Titular: #{contract.NomeTitularContrato}
+    li ID da Ciência: #{contract.CienciaID}
+    li ORC ID: #{contract.ORCID}
+    li Ciência Vitae: #{contract.CienciaVitae}
+    li Carreira RPN: #{contract.Carreira_RPN}
+    li Categoria RPN: #{contract.Categoria_RPN}
+    li Vínculo RPN: #{contract.Vinculo_RPN}
+    li Regime de Prestação de Serviço: #{contract.RegimePrestacaoServico}
+    li Data Início Contrato: #{contract.DataInicioContrato}
+    li Data Fim Contrato: #{contract.DataFimContrato}
+    li ETI Remunerado: #{contract.ETIremunerado}
+    li Procedimento Vinculacao: #{contract.ProcedimentoVinculacao}
+    li Áreas de Investigação: #{contract.AreasInvestigacao}
+    li Instituição de Ensino: #{contract.InstituicaoEnsino}
+    li Ano do Diploma: #{contract.AnoDiploma}
+    li Curso: #{contract.Curso}
+    li Área CNAEF: #{contract.AreaCNAEF}
+    li Área FORD: #{contract.AreaFORD}
+    li Provas de Agregação: #{contract.ProvasAgregacao}
+    li Título de Especialista: #{contract.TituloEspecialista}
+    li Provas de Coordenação: #{contract.ProvasCoordenacao}
+    li Provas de Aptidão: #{contract.ProvasAptidao}
